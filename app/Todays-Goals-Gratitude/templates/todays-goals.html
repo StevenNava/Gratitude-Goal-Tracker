@@ -1,4 +1,38 @@
-<div>
-  <p>Hello World!</p>
-  <p>{{ goals.message }}</p>
+<style>
+  .todays-goals {
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: lightpink;
+    text-align: center;
+  }
+
+  .goal-input {
+    width: 20%;
+    padding-left: .2em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5em;
+    margin: 5px;
+  }
+
+  .goals-header {
+    color: #555;
+  }
+
+</style>
+
+<div class='todays-goals'>
+  <form ng-submit="goals.addGoal();">
+    <input id="goal-input" class="goal-input" type="text" ng-model="goals.newGoal" placeholder="Add a goal...">
+  </form>
+
+  <h2 class="goals-header">Today's Goals</h2>
+  <div ng-repeat="goal in goals.goalList">
+    <div>
+      <span>{{ goal }}</span>
+      <button> &#x2713 </button>
+      <button> &#215 </button>
+    </div>
+  </div>
 </div>

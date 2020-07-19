@@ -4,5 +4,18 @@ angular
 
 function TodaysGoals() {
   var ctrl = this;
-  ctrl.message = 'Hi there, how are things?';
+  ctrl.newGoal = '';
+  ctrl.goalList = [];
+  
+  ctrl.addGoal = function () {
+    if (!ctrl.newGoal || ctrl.goalList.filter( function (item) {
+      return item === ctrl.newGoal;
+    }).length > 0) {
+      ctrl.newGoal = '';
+      return;
+    }
+    ctrl.goalList.push(ctrl.newGoal);
+    console.log(`Goal ${ctrl.newGoal} added...`);
+    ctrl.newGoal = '';
+  }
 }
